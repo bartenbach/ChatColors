@@ -1,0 +1,9 @@
+name: Colors
+version: 0.0.1
+main: org.seed419.Colors
+author: seed419
+commands:
+   colors:
+      description: Lists the colors for iChat
+      permission: Colors.colors
+      usage: /colors
