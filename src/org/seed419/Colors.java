@@ -23,13 +23,12 @@ public class Colors extends JavaPlugin {
     PrintColors printcolors = new PrintColors();
     PluginDescriptionFile pdf;
     static final Logger log = Logger.getLogger("Colors");
-    String pname = "[Colors]";    
 
     @Override
     public void onDisable() {
-        log.info(pname + " Disabled");
+        log.info(pdf.getName() + " Version " + pdf.getVersion() + " Disabled");
     }
-
+    
     @Override
     public void onEnable() {
         pdf = this.getDescription();
