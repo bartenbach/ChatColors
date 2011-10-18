@@ -37,7 +37,7 @@ public class Colors extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(label.equalsIgnoreCase("colors")  && (sender.hasPermission("Colors.colors")  || sender.isOp()))
+        if(label.equalsIgnoreCase("colors"))
         {
             printcolors.printcolors(sender);
             return true;
