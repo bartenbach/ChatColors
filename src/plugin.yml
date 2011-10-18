@@ -5,5 +5,4 @@ author: seed419
 commands:
    colors:
       description: Lists the colors for iChat
-      permission: Colors.colors
-      usage: /colors
+      usage: /<command>

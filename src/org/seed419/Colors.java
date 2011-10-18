@@ -37,17 +37,12 @@ public class Colors extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(label.equalsIgnoreCase("colors")  && sender.hasPermission("Colors.colors")){
+        if(label.equalsIgnoreCase("colors")  && (sender.hasPermission("Colors.colors")  || sender.isOp()))
+        {
             printcolors.printcolors(sender);
             return true;
         }else{
         return false;
         }
-    }
-    
-   
-   
-    
-    
-    
+    }   
 }
