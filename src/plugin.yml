@@ -1,5 +1,5 @@
 name: ChatColors
-version: 0.0.1
+version: 0.0.2
 main: org.seed419.Colors
 author: seed419
 commands:
