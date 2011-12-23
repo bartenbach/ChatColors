@@ -7,8 +7,6 @@ package org.seed419;
 import java.util.logging.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,8 +39,12 @@ public class Colors extends JavaPlugin {
         {
             printcolors.printcolors(sender);
             return true;
+        }else if(label.equalsIgnoreCase("rb")){
+            printcolors.rainbowize(sender, args);
+            return true;
         }else{
-        return false;
+            return false;  
         }
+
     }   
 }

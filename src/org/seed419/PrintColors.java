@@ -4,8 +4,10 @@
  */
 package org.seed419;
 
+import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 /**
  *
@@ -32,4 +34,29 @@ public class PrintColors {
                 + ChatColor.LIGHT_PURPLE + " d Pink" + ChatColor.YELLOW + " e Yellow"+ChatColor.WHITE + " f White");
     }
     
+    public void rainbowize(CommandSender sender, String[] args){
+        String colorMessage = "";
+        String fullMessage = "";
+        for(String y : args){
+            colorMessage = appendColors(y);
+            fullMessage+=colorMessage+" ";
+        }
+        Player player = (Player) sender;
+        player.chat(fullMessage);
+    }
+
+    private String appendColors(String y) {
+        StringBuilder sb = new StringBuilder(y);
+        for(int x = 0; x < y.length()*3; x+=3){
+            sb.insert(x, getRandomColor());
+        }
+      return sb.toString();
+    }
+    
+    private ChatColor getRandomColor(){
+        Random rdm = new Random();
+        int zz = rdm.nextInt(16);
+        ChatColor randomColor = ChatColor.getByCode(zz);
+        return randomColor;
+    }
 }
