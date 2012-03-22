@@ -1,12 +1,12 @@
 name: ChatColors
-version: 1.0
-main: org.seed419.Colors
-author: seed419
+version: 1.2
+main: org.seed419.ChatColors
+author: SeeD419
 commands:
    colors:
-      description: Lists the colors for iChat
+      description: Lists the chat color syntax
       usage: /<command>
    rb:
-      description: Colorifies a message
+      description: Rainbowize a message
       usage: /<command> <message>
 
