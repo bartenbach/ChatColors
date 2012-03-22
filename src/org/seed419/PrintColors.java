@@ -59,7 +59,7 @@ public class PrintColors {
             }
             position++;
         }
-      return sb.toString().replaceAll("_", " ");
+      return sb.toString();
     }
 
     private String getColor(int position){
