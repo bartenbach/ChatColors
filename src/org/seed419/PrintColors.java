@@ -17,15 +17,21 @@ public class PrintColors {
 
     private String[] rainbowCodes = {"&4","&c","&6","&e","&a","&2","&b","&3","&9","&5","&d"};
     private int position;
+    private ChatColors cc;
+
+
+    public PrintColors(ChatColors cc) {
+        this.cc = cc;
+    }
 
 
     public void printcolors(CommandSender sender){
-        sender.sendMessage(ChatColor.GOLD + "====================" + ChatColor.DARK_RED + " C"
-                + ChatColor.RED + "h" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "t" + ChatColor.GREEN + " C"
+        sender.sendMessage(ChatColor.GOLD + "[" + ChatColor.DARK_RED + "C"
+                + ChatColor.RED + "h" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "t" + ChatColor.GREEN + "C"
                 + ChatColor.DARK_GREEN + "o" + ChatColor.AQUA + "l" + ChatColor.DARK_AQUA + "o" + ChatColor.BLUE
-                + "r" + ChatColor.LIGHT_PURPLE + "s " + ChatColor.DARK_PURPLE + ChatColor.GOLD + "====================");
-        sender.sendMessage(ChatColor.DARK_GREEN + "Syntax for Chat Colors is an ampersand '&', followed by");
-        sender.sendMessage(ChatColor.DARK_GREEN + "either a number or character as follows:");
+                + "r" + ChatColor.LIGHT_PURPLE + "s" + ChatColor.DARK_PURPLE + ChatColor.GOLD + "]");
+        sender.sendMessage(ChatColor.GRAY + "Syntax for Chat Colors is an ampersand '&', followed by");
+        sender.sendMessage(ChatColor.GRAY + "either a number or character as follows:");
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GRAY + "Dark Colors:");
         sender.sendMessage(ChatColor.DARK_BLUE + "1 Dark Blue"+ ChatColor.DARK_GREEN
@@ -36,18 +42,23 @@ public class PrintColors {
         sender.sendMessage(ChatColor.GRAY + "Bright Colors:");
         sender.sendMessage(ChatColor.GREEN + "a Green"  + ChatColor.AQUA + " b Aqua" + ChatColor.RED + " c Red"
                 + ChatColor.LIGHT_PURPLE + " d Pink" + ChatColor.YELLOW + " e Yellow"+ChatColor.WHITE + " f White");
+        sender.sendMessage("");
+        sender.sendMessage(ChatColor.GRAY + "Other: ");
+        sender.sendMessage("k " + ChatColor.MAGIC + "m" + ChatColor.RESET +  "   l " + ChatColor.BOLD + "Bold" + ChatColor.RESET +
+                "   o" + ChatColor.ITALIC + " Italics" + "   n " + ChatColor.UNDERLINE + "Underline");
+        sender.sendMessage("m " + ChatColor.STRIKETHROUGH + "Strikethrough" + ChatColor.RESET + "   r Reset Formatting");
+
     }
 
     public void rainbowize(CommandSender sender, String[] args) {
         position = 0;
-        String colorMessage = "";
+        String colorMessage;
         String fullMessage = "";
         for(String y : args){
             colorMessage = appendColors(y);
             fullMessage+=colorMessage+" ";
         }
-        Player player = (Player) sender;
-        player.chat(fullMessage);
+        send(sender, fullMessage);
     }
 
     private String appendColors(String y) {
@@ -64,5 +75,14 @@ public class PrintColors {
 
     private String getColor(int position){
         return rainbowCodes[position];
+    }
+
+    private void send(CommandSender sender, String message) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            player.chat(message);
+        } else {
+            cc.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "[Server] " + message);
+        }
     }
 }

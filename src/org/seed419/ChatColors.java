@@ -7,6 +7,7 @@ package org.seed419;
 import java.util.logging.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,41 +40,53 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @license AOL v.a3 <http://aol.nexua.org>*/
 
+//TODO word wrapping :)
 
 public class ChatColors extends JavaPlugin {
 
+
     private PluginManager pm;
-    private PrintColors printcolors = new PrintColors();
+    private PrintColors printcolors = new PrintColors(this);
     private PlayerChatColorParser parser;
     private PluginDescriptionFile pdf;
     static final Logger log = Logger.getLogger("Colors");
 
-    @Override
-    public void onDisable() {
-        log.info(pdf.getName() + " Version " + pdf.getVersion() + " Disabled");
-    }
 
     @Override
     public void onEnable() {
-        pdf = this.getDescription();
-        parser = new PlayerChatColorParser();
+        parser = new PlayerChatColorParser(this);
         pm = getServer().getPluginManager();
         pm.registerEvents(parser, this);
-        log.info(pdf.getName() + " Version " + pdf.getVersion() + " Enabled");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(label.equalsIgnoreCase("colors"))
-        {
+        Player player = null;
+        if (sender instanceof Player) {
+            player = (Player) sender;
+        }
+        if (label.equalsIgnoreCase("colors")) {
+            if (sender instanceof Player) {
+                if (!hasPerms(player, "chatcolors.colors")) {
+                    return false;
+                }
+            }
             printcolors.printcolors(sender);
             return true;
-        }else if(label.equalsIgnoreCase("rb")){
+        } else if(label.equalsIgnoreCase("rb")) {
+            if (sender instanceof Player) {
+                if (!hasPerms(player, "chatcolors.rainbow")) {
+                    return false;
+                }
+            }
             printcolors.rainbowize(sender, args);
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
 
+    public boolean hasPerms(Player player, String permission) {
+        return (player.hasPermission(permission) || player.hasPermission("chatcolors.*") || player.isOp());
     }
 }
