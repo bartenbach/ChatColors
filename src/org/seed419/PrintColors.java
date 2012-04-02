@@ -82,7 +82,7 @@ public class PrintColors {
             Player player = (Player) sender;
             player.chat(message);
         } else {
-            cc.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "[Server] " + message);
+            cc.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + "[Server] " + message);
         }
     }
 }

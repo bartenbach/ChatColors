@@ -29,10 +29,10 @@ public class PlayerChatColorParser implements Listener {
         if (!cc.hasPerms(event.getPlayer(), "chatcolors.format")) {
             return;
         }
-        event.setMessage(translateAlternateColorCodes('&', event.getMessage()));
+        event.setMessage(customTranslateAlternateColorCodes('&', event.getMessage()));
     }
 
-    public static String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
+    public static String customTranslateAlternateColorCodes(char altColorChar, String textToTranslate) {
         char[] charArray = textToTranslate.toCharArray();
         for (int i = 0; i < charArray.length - 1; i++) {
             if (charArray[i] == altColorChar && "0123456789AaBbCcDdEeFfKkNnRrLlMmOo".indexOf(charArray[i+1]) > -1) {

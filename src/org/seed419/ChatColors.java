@@ -42,6 +42,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 //TODO word wrapping :)
 
+/*
+ * Changelog:
+ * Fixed server color
+ */
+
 public class ChatColors extends JavaPlugin {
 
 
