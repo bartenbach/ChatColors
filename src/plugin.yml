@@ -1,10 +1,11 @@
 name: ChatColors
-version: 1.4
+version: 1.5.2
 main: org.seed419.ChatColors
 author: SeeD419
 commands:
    colors:
       description: Lists the chat color syntax
+      aliases: colours
    rb:
       description: Rainbowize a message
 

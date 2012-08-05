@@ -70,7 +70,7 @@ public class ChatColors extends JavaPlugin {
         if (sender instanceof Player) {
             player = (Player) sender;
         }
-        if (label.equalsIgnoreCase("colors")) {
+        if (label.equalsIgnoreCase("colors") || label.equalsIgnoreCase("colours")) {
             if (sender instanceof Player) {
                 if (!hasPerms(player, "chatcolors.colors")) {
                     return false;
