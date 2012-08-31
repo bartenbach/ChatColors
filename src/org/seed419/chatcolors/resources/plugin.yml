@@ -1,6 +1,6 @@
 name: ChatColors
 version: 1.5.3
-main: org.seed419.ChatColors
+main: org.seed419.chatcolors.ChatColors
 author: SeeD419
 commands:
    colors:

@@ -1,10 +1,11 @@
-package org.seed419;
+package org.seed419.chatcolors;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.seed419.chatcolors.ChatColors;
 
 /*  Attribute Only (Public) License
         Version 0.a3, July 11, 2011

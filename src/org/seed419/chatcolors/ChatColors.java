@@ -1,4 +1,4 @@
-package org.seed419;
+package org.seed419.chatcolors;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
