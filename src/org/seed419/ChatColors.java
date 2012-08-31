@@ -1,21 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.seed419;
 
-import java.util.logging.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- *
- * @author seed419
- */
 /*  Attribute Only (Public) License
         Version 0.a3, July 11, 2011
 
@@ -40,26 +30,23 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @license AOL v.a3 <http://aol.nexua.org>*/
 
-//TODO word wrapping :)
+//TODO word wrapping bleh
 
 /*
  * Changelog:
- * Fixed server color
+ * Updated source just a tad
  */
 
 public class ChatColors extends JavaPlugin {
 
 
     private PluginManager pm;
-    private PrintColors printcolors = new PrintColors(this);
-    private PlayerChatColorParser parser;
-    private PluginDescriptionFile pdf;
-    static final Logger log = Logger.getLogger("Colors");
+    private final PrintColors printcolors = new PrintColors(this);
+    private final PlayerChatColorParser parser = new PlayerChatColorParser(this);
 
 
     @Override
     public void onEnable() {
-        parser = new PlayerChatColorParser(this);
         pm = getServer().getPluginManager();
         pm.registerEvents(parser, this);
     }
